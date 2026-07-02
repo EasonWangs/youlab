@@ -1,0 +1,90 @@
+{% assign resources_copy = site.data.resources[page.lang] | default: site.data.resources.en %}
+{% assign p = page.root_prefix | default: '' %}
+{% capture research_href %}{{ p }}{% if page.lang == "zh" %}zh/{% endif %}Research.htm{% endcapture %}
+{% capture publications_href %}{{ p }}{% if page.lang == "zh" %}zh/{% endif %}Publications.htm{% endcapture %}
+
+<script src="{{ p }}assets/js/energy-converter.js" defer></script>
+
+<div class="energy_converter main wrap_box pd90">
+  <div class="wavelength">
+    <div class="title_box">
+      <h1>{{ resources_copy.hero.title }}</h1><br />
+      <p>{{ resources_copy.hero.body }}</p>
+    </div>
+    <br /><br />
+    <div class="title_box">
+      <h6 class="title">{{ resources_copy.wavelength.title }}</h6>
+      <p>{{ resources_copy.wavelength.note }}</p>
+    </div>
+    <div class="content_box">
+      <div class="content_top flex">
+        <div>
+          <label>{{ resources_copy.wavelength.labels.nm }}</label>
+          <input id="input_nm" type="number" />
+        </div>
+        <div>
+          <label>{{ resources_copy.wavelength.labels.um }}</label>
+          <input id="input_um" type="number" />
+        </div>
+        <div>
+          <label>{{ resources_copy.wavelength.labels.cm }}</label>
+          <input id="input_cm" type="number" />
+        </div>
+      </div>
+      <div class="content_bottom flex">
+        <div>
+          <label>{{ resources_copy.wavelength.labels.mev }}</label>
+          <input id="input_meV" type="number" />
+        </div>
+        <div>
+          <label>{{ resources_copy.wavelength.labels.joules }}</label>
+          <input id="input_J" type="number" />
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="raman">
+    <div class="title_box">
+      <h6 class="title">{{ resources_copy.raman.title }}</h6>
+      <p>{{ resources_copy.raman.note }}</p>
+    </div>
+    <div class="content_box">
+      <div class="content_top flex">
+        <div>
+          <label>{{ resources_copy.raman.labels.excitation }}</label>
+          <input name="l0" id="l0" type="number" />
+        </div>
+        <div>
+          <label>{{ resources_copy.raman.labels.wavelength }}</label>
+          <input name="l1" id="l1" type="number" />
+        </div>
+        <div>
+          <label>{{ resources_copy.raman.labels.wavenumber }}</label>
+          <input name="dw" id="dw" type="number" />
+        </div>
+      </div>
+      <div class="content_bottom flex">
+        <div>
+          <label>{{ resources_copy.raman.labels.frequency }}</label>
+          <input name="rghz" id="rghz" type="number" disabled />
+        </div>
+        <div>
+          <label>{{ resources_copy.raman.labels.energy }}</label>
+          <input name="rmev" id="rmev" type="number" disabled />
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div class="title_box">
+    <p>
+      {{ resources_copy.cta.before }}
+      <a href="{{ research_href }}">{{ resources_copy.cta.research }}</a>
+      {{ resources_copy.cta.middle }}
+      <a href="{{ publications_href }}">{{ resources_copy.cta.publications }}</a>{{ resources_copy.cta.after }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+en:
+  hero:
+    title: "Energy Conversion at the Molecular Scale: What Vibrational Spectroscopy Reveals"
+    body: 'Molecules constantly absorb and release energy through vibrations — the stretching and bending of chemical bonds. <strong>Ultrafast infrared spectroscopy</strong>, including <strong>two-dimensional infrared (2D IR) spectroscopy</strong>, captures these processes on the timescale they actually occur: picoseconds to femtoseconds. Understanding <strong>molecular energy transfer</strong> and <strong>vibrational dynamics</strong> is central to fields ranging from solar energy conversion to biological catalysis.'
+  wavelength:
+    title: "Wavelength - energy converter"
+    note: "All fields are inputs/outputs"
+    labels:
+      nm: "nm"
+      um: "μm"
+      cm: "cm⁻¹"
+      mev: "meV"
+      joules: "joules"
+  raman:
+    title: "Raman Shift converter"
+    note: "Enter the laser excitation wavelength (nm) and Raman shift either in nanometers (nm) or wavenumbers (cm⁻¹) in order to convert units of the Raman shift."
+    labels:
+      excitation: "Excitation Wavelength* (nm)"
+      wavelength: "Raman Wavelength (nm)"
+      wavenumber: "Raman Wavenumber (cm⁻¹)"
+      frequency: "Raman Frequency (GHz)"
+      energy: "Raman Energy (meV)"
+  cta:
+    before: "Learn how we apply these principles in our"
+    research: "research on hydrogen-bond dynamics"
+    middle: "and"
+    publications: "published work in ultrafast spectroscopy"
+    after: "."
+
+zh:
+  hero:
+    title: "分子尺度的能量转换：振动光谱揭示了什么"
+    body: '分子会通过化学键的伸缩与弯曲不断吸收和释放能量。<strong>超快红外光谱</strong>，包括<strong>二维红外（2D IR）光谱</strong>，可以在皮秒到飞秒时间尺度捕捉这些真实发生的过程。理解<strong>分子能量转移</strong>与<strong>振动动力学</strong>，对于太阳能转换、生物催化等领域都十分重要。'
+  wavelength:
+    title: "波长 - 能量换算器"
+    note: "所有字段都可作为输入或输出"
+    labels:
+      nm: "nm"
+      um: "μm"
+      cm: "cm⁻¹"
+      mev: "meV"
+      joules: "焦耳"
+  raman:
+    title: "拉曼位移换算器"
+    note: "输入激发激光波长（nm），以及以纳米（nm）或波数（cm⁻¹）表示的拉曼位移，即可换算拉曼位移相关单位。"
+    labels:
+      excitation: "激发波长* (nm)"
+      wavelength: "拉曼波长 (nm)"
+      wavenumber: "拉曼波数 (cm⁻¹)"
+      frequency: "拉曼频率 (GHz)"
+      energy: "拉曼能量 (meV)"
+  cta:
+    before: "了解我们如何将这些原理用于"
+    research: "氢键动力学研究"
+    middle: "以及"
+    publications: "超快光谱相关论文"
+    after: "。"

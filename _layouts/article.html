@@ -1,0 +1,64 @@
+---
+layout: 'common'
+---
+{% assign p = page.root_prefix | default: '' %}
+{% assign detail_class = page.detail_class | default: 'research_detail' %}
+{% if page.parent_url %}
+  {% assign parent_href = page.parent_url %}
+{% elsif page.article_kind == 'concepts' %}
+  {% if page.lang == 'zh' %}
+    {% assign parent_href = p | append: 'zh/Resources/Concepts.htm' %}
+  {% else %}
+    {% assign parent_href = p | append: 'Resources/Concepts.htm' %}
+  {% endif %}
+{% elsif page.article_kind == 'news' %}
+  {% if page.lang == 'zh' %}
+    {% assign parent_href = p | append: 'zh/News/1.htm' %}
+  {% else %}
+    {% assign parent_href = p | append: 'News/1.htm' %}
+  {% endif %}
+{% else %}
+  {% assign parent_href = p | append: 'index.html' %}
+{% endif %}
+
+<div class="main wrap_box">
+  <div class="{{ detail_class }}">
+    <div class="breadcrumb">
+      <p class="enCont">
+        <a href="{{ parent_href }}">Back</a>
+        <img src="{{ p }}assets/images/decor/right_jiantou.png" alt="">
+        Article
+      </p>
+      <p class="zhCont">
+        <a href="{{ parent_href }}">返回</a>
+        <img src="{{ p }}assets/images/decor/right_jiantou.png" alt="">
+        文章
+      </p>
+    </div>
+
+    <div class="title_box">
+      <h3 class="title">
+        {{ page.display_title | default: page.title }}
+      </h3>
+
+      {% if page.article_kind == 'news' %}
+        <div class="date">
+          {{ page.date_display | default: page.date | date: "%Y-%m-%d %H:%M" }}
+        </div>
+      {% else %}
+        <div class="author_date flex">
+          {% if page.author %}
+            <span>{{ page.author }}</span>
+          {% endif %}
+          <span>{{ page.date_display | default: page.date | date: "%b %d, %Y %H:%M" }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="content_box" id="vsb_content">
+      <div class="v_news_content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

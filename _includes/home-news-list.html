@@ -1,0 +1,23 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign home_news_posts = site.posts | where: "article_kind", "news" | where: "lang", page.lang %}
+{% for post in home_news_posts limit: 5 %}
+  {% assign post_title = post.display_title | default: post.title %}
+  {% assign post_href = post.url | remove_first: '/' %}
+  {% if page.lang == 'zh' %}
+    {% assign post_href = post_href | remove_first: 'zh/' %}
+  {% endif %}
+  <li class="ax-slide slide1 ax-bg-ignore">
+    <a href="{{ post_href }}" title="{{ post_title | escape }}">
+      {% if post.cover_image %}
+        <img class="dn-picture dp-img1 com-size-all-img com-object-fit-cover ax-fadeIn" src="{{ p }}{{ post.cover_image }}" alt="{{ post_title | escape }}" loading="lazy" decoding="async">
+      {% endif %}
+      <div class="dn-word ax-xxl ">
+        <div class="dp-time1 ax-color-ignore ax-padding-top ax-sm ">
+          <span class="date-day">{{ post.date | date: "%d" }}</span>
+          <span class="date-month">{{ post.date | date: "%Y-%m" }}</span>
+        </div>
+        <h6 class="overflow-ellipsis-2">{{ post_title }}</h6>
+      </div>
+    </a>
+  </li>
+{% endfor %}

@@ -1,0 +1,32 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign footer = site.data.site.footer %}
+<footer>
+  <div class="f_top"></div>
+  <div class="f_bottom wrap_box flex">
+    <div class="f_b_left">
+      <div class="record_info">
+        <p>
+          <img class="bg" src="{{ p }}{{ footer.waves.left }}" height="60" alt="">
+          <img class="bg" src="{{ p }}{{ footer.waves.right }}" height="60" alt="">
+        </p>
+        <p><br><br><br></p>
+        {% for record in footer.records %}
+          <p>{{ record }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="f_b_right">
+      <div class="collaboration">
+        <h3 class="enCont">{{ footer.collaboration.title.en }}</h3>
+        <h3 class="zhCont">{{ footer.collaboration.title.zh }}</h3>
+        {% for link in footer.collaboration.links %}
+          <p><a href="{{ link.href }}" target="_blank">{{ link.label }}</a></p>
+        {% endfor %}
+      </div>
+      <div class="contact">
+        <div><img src="{{ p }}{{ footer.contact.address.icon }}" class="img_vsb_content">&nbsp;{{ footer.contact.address.text }}</div>
+        <div><img class="img_vsb_content" src="{{ p }}{{ footer.contact.email.icon }}">{{ footer.contact.email.text }}</div>
+      </div>
+    </div>
+  </div>
+</footer>

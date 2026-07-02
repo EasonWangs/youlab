@@ -1,0 +1,92 @@
+header:
+  title: Spatiotemporal Spectroscopic Imaging Lab
+  tagline: Understanding how molecular motion shapes complex systems across space and time.
+  logos:
+    en:
+      image: assets/images/decor/logo.png
+      title: Optical Imaging and Spectroscopy Laboratory
+    zh:
+      image: assets/images/decor/logo_zh.png
+      title: Optical Imaging and Spectroscopy Laboratory
+  logo_links:
+    westlake: https://www.westlake.edu.cn/
+    school: https://engineering.westlake.edu.cn/
+  group_image: assets/images/decor/group.png
+  language_label: Switch language
+
+nav:
+  en:
+    - label: Home
+      href: index.html
+      active: home
+    - label: Research
+      href: Research.htm
+      active: research
+    - label: People
+      href: People.htm
+      active: people
+    - label: Publications
+      href: Publications.htm
+      active: publications
+    - label: News
+      href: News.htm
+      active: news
+    - label: Resources
+      href: Resources.htm
+      active: resources
+      children:
+        - label: Concepts
+          href: Resources/Concepts.htm
+        - label: Energy Converter
+          href: Resources/EnergyConverter.htm
+  zh:
+    - label: 首页
+      href: zh/index.html
+      active: home
+    - label: 研究
+      href: zh/Research.htm
+      active: research
+    - label: 团队
+      href: zh/People.htm
+      active: people
+    - label: 成果
+      href: zh/Publications.htm
+      active: publications
+    - label: 动态
+      href: zh/News.htm
+      active: news
+    - label: 资源
+      href: zh/Resources.htm
+      active: resources
+      children:
+        - label: 参考资料
+          href: zh/Resources/Concepts.htm
+        - label: 公式计算器
+          href: zh/Resources/EnergyConverter.htm
+
+footer:
+  waves:
+    left: assets/images/decor/footer-wave-left.png
+    right: assets/images/decor/footer-wave-right.png
+  records:
+    - 浙ICP备18025489号
+    - 浙公安备33010602007514号
+    - Copyright © Westlake University. All Rights Reserved
+  collaboration:
+    title:
+      en: Collaboration and Funding
+      zh: 合作和资助
+    links:
+      - label: Laboratory of Synthetic Biology and Bioengineering
+        href: https://synbio-zeng.lab.westlake.edu.cn
+      - label: Baiz Group at UT Austin
+        href: https://baizgroup.org
+      - label: School of Engineering
+        href: https://engineering.westlake.edu.cn
+  contact:
+    address:
+      icon: assets/images/decor/address_icon.png
+      text: "Address: E3-311 No.600 Dunyu Road, Hangzhou 310030, Zhejiang Province, China"
+    email:
+      icon: assets/images/decor/email_icon.png
+      text: "Email: youxiao@westlake.edu.cn"

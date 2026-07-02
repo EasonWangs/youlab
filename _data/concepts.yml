@@ -1,0 +1,46 @@
+en:
+  filters:
+    - System
+    - Methods
+    - Scientific Writing & Communication
+    - Mentorship & Lab Culture
+  items:
+    "1001":
+      type: Methods
+      subtype: Raman Snectroscopy
+      class: Raman Snectroscopy Methods
+    "1002":
+      type: Methods
+      subtype: 2DIR
+      class: 2DIR Methods
+    "1003":
+      type: Scientific Writing & Communication
+      subtype: Scientific Writing
+      class: Scientific Writing Scientific Writing Communication
+    "1004":
+      type: Scientific Writing & Communication
+      subtype: Scientific Writing
+      class: Scientific Writing Scientific Writing Communication
+zh:
+  filters:
+    - 研究体系
+    - 分析方法
+    - 科研写作与表达
+    - 导师信札与课题组文化
+  items:
+    "1001":
+      type: 分析方法
+      subtype: Raman Snectroscopy
+      class: Raman Snectroscopy 分析方法
+    "1002":
+      type: 研究体系
+      subtype: Zwitterionic
+      class: Zwitterionic 研究体系
+    "1003":
+      type: 科研写作与表达
+      subtype: 科学写作
+      class: 科学写作 科研写作与表达
+    "1004":
+      type: 科研写作与表达
+      subtype: 科学写作
+      class: 科学写作 科研写作与表达

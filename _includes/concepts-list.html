@@ -1,0 +1,66 @@
+{% assign concepts_config = site.data.concepts[page.lang] %}
+{% assign concept_posts = site.posts | where: "article_kind", "concepts" | where: "lang", page.lang %}
+
+<div class="teaching main">
+  <div class="wrap_box pd90 clearfix">
+    <nav>
+      <dl>
+        <dt>All</dt>
+        {% for filter in concepts_config.filters %}
+          <dd>
+            <a href="javascript:;">{{ filter }}</a>
+          </dd>
+        {% endfor %}
+      </dl>
+    </nav>
+    <ul class="teaching_list">
+      <script>var typeList = [],type;</script>
+      {% for post in concept_posts %}
+        {% assign meta = concepts_config.items[post.article_id] %}
+        {% assign post_href = post.url | remove_first: '/' | remove_first: 'zh/' %}
+        <script>
+          type = '{{ meta.type }}';
+          typeList.push(type);
+        </script>
+        <li id="section_u3_{{ forloop.index0 }}" class="{{ meta.class }}" data-type="{{ meta.type }}" data-subtype="{{ meta.subtype }}">
+          <a href="../{{ post_href }}" title="{{ post.display_title | default: post.title | escape }}">
+            <h6>{{ post.display_title | default: post.title }}</h6>
+            <div>{{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</div>
+          </a>
+        </li>
+      {% endfor %}
+      <script>
+        var dlElement = document.getElementsByTagName('dl')[0];
+        var dtElement = document.getElementsByTagName('dt')[0];
+        var liElements = document.querySelectorAll('.teaching_list > li[id]');
+        function setActiveNav(element) {
+          dlElement.querySelectorAll('dt, dd a').forEach(navElement => {
+            navElement.classList.remove('active');
+          });
+          element.classList.add('active');
+        }
+        function showAll() {
+          for (let i = 0; i < liElements.length; i++) {
+            liElements[i].style.display = "block";
+          }
+          setActiveNav(dtElement);
+        }
+        function filterByType(typeName) {
+          for (let i = 0; i < liElements.length; i++) {
+            var liElement = liElements[i];
+            liElement.style.display = liElement.dataset.type == typeName ? "block" : "none";
+          }
+        }
+        dlElement.querySelectorAll('dd a').forEach(typeElement => {
+          typeElement.addEventListener("click", function(e) {
+            e.preventDefault();
+            filterByType(typeElement.innerText.trim());
+            setActiveNav(typeElement);
+          });
+        });
+        dtElement.addEventListener("click", showAll);
+        dtElement.classList.add('active');
+      </script>
+    </ul>
+  </div>
+</div>

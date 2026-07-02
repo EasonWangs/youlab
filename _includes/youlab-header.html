@@ -1,0 +1,41 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign header = site.data.site.header %}
+<header>
+  <div class="wrap_box">
+    <div class="h-center">
+      <p>{{ header.title }}</p>
+      <p><span style="font-size: 14px;">{{ header.tagline }}</span></p>
+    </div>
+    <div class="h-left logo_box enCont">
+      <a class="link1" href="{{ header.logo_links.westlake }}"></a>
+      <img class="logo" title="{{ header.logos.en.title }}" src="{{ p }}{{ header.logos.en.image }}">
+      <a class="link2" href="{{ header.logo_links.school }}"></a>
+    </div>
+    <div class="h-left logo_box zhCont">
+      <a class="link1" href="{{ header.logo_links.westlake }}"></a>
+      <img class="logo" title="{{ header.logos.zh.title }}" src="{{ p }}{{ header.logos.zh.image }}">
+      <a class="link2" href="{{ header.logo_links.school }}"></a>
+    </div>
+    <div class="h-right">
+      <img id="group" class="group" src="{{ p }}{{ header.group_image }}" height="50" style="text-wrap: wrap;">
+      <a class="lang" id="langBtn" href="javascript:;" aria-label="{{ header.language_label }}"><span class="lang__item lang__item--zh">中</span><span class="lang__divider">/</span><span class="lang__item lang__item--en">En</span></a>
+    </div>
+    <script>
+      var langBtn = document.getElementById("langBtn");
+      if (langBtn) {
+        langBtn.onclick = function () {
+          var path = location.pathname;
+          if (/\/$/.test(path)) {
+            location.href = isZh ? "{{ p }}index.html" : "{{ p }}zh/index.html";
+            return;
+          }
+          var targetPath = isZh
+            ? path.replace(/\/zh(?=\/|$)/, "")
+            : path.replace(/\/((?:News|Resources|info)\/|index\.html$|(?:Research|People|Publications|News|Resources|Contact)\.htm$)/, "/zh/$1");
+          if (!isZh && targetPath === path) { targetPath = path.replace(/\/?$/, "/zh/"); }
+          location.href = targetPath + location.search + location.hash;
+        };
+      }
+    </script>
+  </div>
+</header>

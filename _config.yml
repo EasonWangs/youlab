@@ -1,0 +1,26 @@
+title: You Lab
+tagline: Spatiotemporal Spectroscopic Imaging Lab
+description: Understanding how molecular motion shapes complex systems across space and time.
+lang: en
+url: ""
+baseurl: ""
+
+include:
+  - _pages
+
+markdown: kramdown
+
+sass:
+  style: compressed
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: 'common'
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

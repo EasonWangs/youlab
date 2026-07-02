@@ -1,0 +1,21 @@
+{% assign p = page.root_prefix | default: '' %}
+<menu>
+  {% for lang_nav in site.data.site.nav %}
+    {% assign lang = lang_nav[0] %}
+    {% assign nav_items = lang_nav[1] %}
+    <ul class="menu wrap_box flex {{ lang }}Cont">
+      {% for item in nav_items %}
+        <li class="flex">
+          <a {% if page.active == item.active %}class="active"{% endif %} href="{{ p }}{{ item.href }}">{{ item.label }}</a>
+          {% if item.children %}
+            <div class="list">
+              {% for child in item.children %}
+                <a href="{{ p }}{{ child.href }}">{{ child.label }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</menu>

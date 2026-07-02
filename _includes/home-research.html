@@ -1,0 +1,47 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign home_research = site.data.home_research.en %}
+{% if page.lang == 'zh' %}
+  {% assign home_research = site.data.home_research.zh %}
+{% endif %}
+
+<div class="research pd90">
+  <div class="wrap_box">
+    <div class="research_l">
+      {% if home_research.shadow_title %}
+        <div class="shadowText">
+          {{ home_research.shadow_title }}
+        </div>
+      {% endif %}
+      <h3>{{ home_research.title }}</h3>
+    </div>
+
+    <p>{{ home_research.intro }}</p>
+
+    <div class="research_r">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for slide in home_research.slides %}
+            {% assign slide_href = slide.href | default: 'javascript:;' %}
+            <a class="swiper-slide" href="{{ slide_href }}">
+              <div>
+                <img src="{{ p }}{{ slide.image }}" alt="{{ slide.alt | default: slide.caption | escape }}" loading="lazy" decoding="async">
+              </div>
+              <p>{{ slide.caption }}</p>
+            </a>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination">
+        </div>
+      </div>
+    </div>
+    <script>
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        loop: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        disableOnInteraction: false
+      })
+    </script>
+  </div>
+</div>

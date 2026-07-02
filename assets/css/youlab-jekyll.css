@@ -1,0 +1,15 @@
+.alumni-avatar {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #0a498f;
+  color: #fff;
+  font-family: Oswald, Arial, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}

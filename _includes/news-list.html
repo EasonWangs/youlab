@@ -1,0 +1,88 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign page_slugs = site.data.news_pages.slugs %}
+{% assign per_page = page.news_per_page | default: site.data.news_pages.per_page | default: 6 %}
+{% assign current_page = page.news_page_index | default: 0 %}
+{% assign offset = current_page | times: per_page %}
+{% assign news_posts = site.posts | where: "article_kind", "news" | where: "lang", page.lang %}
+{% assign total = news_posts | size %}
+{% assign page_count = total | divided_by: per_page %}
+{% assign remainder = total | modulo: per_page %}
+{% if remainder > 0 %}
+  {% assign page_count = page_count | plus: 1 %}
+{% endif %}
+{% assign max_page_count = page_slugs | size %}
+{% if page_count > max_page_count %}
+  {% assign page_count = max_page_count %}
+{% endif %}
+{% assign last_page = page_count | minus: 1 %}
+
+<div class="newsList pd90 main">
+  <div class="wrap_box">
+    <ul>
+      {% for post in news_posts offset: offset limit: per_page %}
+        <li>
+          <a href="{{ p }}{{ post.url | remove_first: '/' }}" class="flex" title="{{ post.display_title | default: post.title | escape }}">
+            {% if post.cover_image %}
+              <img class="newsPic" src="{{ p }}{{ post.cover_image }}" alt="{{ post.display_title | default: post.title | escape }}" loading="lazy" decoding="async">
+            {% endif %}
+            <div class="cont">
+              <h6>{{ post.display_title | default: post.title }}</h6>
+              <p>{{ post.description | default: post.excerpt | strip_html | strip }}</p>
+            </div>
+            <div class="date">
+              <span>{{ post.date | date: "%d" }}</span>
+              <span>{{ post.date | date: "%Y-%m" }}</span>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if page_count > 1 and current_page < page_count %}
+      <span class="p_pages">
+        {% assign first_path = page_slugs | first %}
+
+        {% if current_page == 0 %}
+          <span class="p_first_d p_fun_d">首页</span><span class="p_prev_d p_fun_d">上页</span>
+        {% else %}
+          {% assign prev_index = current_page | minus: 1 %}
+          {% assign prev_slug = '' %}
+          {% for slug in page_slugs %}
+            {% if forloop.index0 == prev_index %}{% assign prev_slug = slug %}{% endif %}
+          {% endfor %}
+          {% assign prev_path = prev_slug %}
+          <span class="p_first p_fun"><a href="{{ first_path }}">首页</a></span><span class="p_prev p_fun"><a href="{{ prev_path }}">上页</a></span>
+        {% endif %}
+
+        {% for number in (1..page_count) %}
+          {% assign index = number | minus: 1 %}
+          {% if index == current_page %}
+            <span class="p_no_d">{{ number }}</span>
+          {% else %}
+            {% assign number_slug = '' %}
+            {% for slug in page_slugs %}
+              {% if forloop.index0 == index %}{% assign number_slug = slug %}{% endif %}
+            {% endfor %}
+            {% assign number_path = number_slug %}
+            <span class="p_no"><a href="{{ number_path }}">{{ number }}</a></span>
+          {% endif %}
+        {% endfor %}
+
+        {% if current_page == last_page %}
+          <span class="p_next_d p_fun_d">下页</span><span class="p_last_d p_fun_d">尾页</span>
+        {% else %}
+          {% assign next_index = current_page | plus: 1 %}
+          {% assign next_slug = '' %}
+          {% assign last_slug = '' %}
+          {% for slug in page_slugs %}
+            {% if forloop.index0 == next_index %}{% assign next_slug = slug %}{% endif %}
+            {% if forloop.index0 == last_page %}{% assign last_slug = slug %}{% endif %}
+          {% endfor %}
+          {% assign next_path = next_slug %}
+          {% assign last_path = last_slug %}
+          <span class="p_next p_fun"><a href="{{ next_path }}">下页</a></span><span class="p_last p_fun"><a href="{{ last_path }}">尾页</a></span>
+        {% endif %}
+      </span>
+    {% endif %}
+  </div>
+</div>
