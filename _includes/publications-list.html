@@ -1,0 +1,36 @@
+{% assign p = page.root_prefix | default: '' %}
+{% assign publications = site.data.publications.sections %}
+
+<div class="main">
+  <div class="publications">
+    <div class="wrap_box pd90 clearfix">
+      <ul class="publications_nav">
+        {% for section in publications %}
+          <li>
+            <a href="Publications.htm#{{ section.id }}">{{ section.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="content_list">
+        <ul>
+          {% for section in publications %}
+            <dl>
+              <dt id="{{ section.id }}">{{ section.label }}</dt>
+              {% for item in section.items %}
+                {% assign item_href = item.href %}
+                {% unless item_href contains '://' %}
+                  {% assign item_href = p | append: item_href %}
+                {% endunless %}
+                <dd>
+                  {{ item.authors }}
+                  <a href="{{ item_href }}">{{ item.link_text }}</a>{{ item.details }}
+                </dd>
+              {% endfor %}
+            </dl>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
