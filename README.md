@@ -3,12 +3,63 @@
 
 ## 本地运行
 
+本地运行需要 Ruby 环境。首次准备环境时，先确认已安装 Ruby：
+
+```bash
+ruby -v
+```
+
+然后按 Jekyll 官方写法安装 Bundler 和 Jekyll：
+
+```bash
+gem install bundler jekyll
+```
+
+进入项目根目录后，安装项目依赖：
+
 ```bash
 bundle install
+```
+
+启动 Jekyll 本地服务：
+
+```bash
 bundle exec jekyll serve
 ```
 
-然后打开 `http://127.0.0.1:4000`。
+默认本地地址是 `http://127.0.0.1:4000`。
+
+开发时可以开启自动刷新：
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+如果 `4000` 端口被占用，可以换一个端口：
+
+```bash
+bundle exec jekyll serve --port 4001
+```
+
+关闭服务时，在运行 Jekyll 的终端里按 `Ctrl + C`。
+
+如果服务在后台运行，可以先查找进程：
+
+```bash
+ps aux | grep jekyll
+```
+
+然后用进程号关闭：
+
+```bash
+kill <PID>
+```
+
+也可以按端口关闭默认的 `4000` 服务：
+
+```bash
+lsof -ti:4000 | xargs kill
+```
 
 ## 部署到 GitHub Pages
 
