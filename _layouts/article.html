@@ -57,7 +57,15 @@ layout: 'common'
 
     <div class="content_box" id="vsb_content">
       <div class="v_news_content">
-        {{ content }}
+        {% assign asset_prefix = p | append: 'assets/' %}
+        {% assign article_content = content
+          | replace: 'src="../../../assets/', 'src="__ARTICLE_ASSET__/'
+          | replace: 'src="../../assets/', 'src="__ARTICLE_ASSET__/'
+          | replace: 'href="../../../assets/', 'href="__ARTICLE_ASSET__/'
+          | replace: 'href="../../assets/', 'href="__ARTICLE_ASSET__/'
+          | replace: '__ARTICLE_ASSET__/', asset_prefix
+        %}
+        {{ article_content }}
       </div>
     </div>
   </div>
